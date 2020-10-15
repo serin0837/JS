@@ -128,3 +128,60 @@ For example, if we created a variable var firstName = "Charles", we could find o
 var firstName = "Charles";
 var firstLetter = firstName[0]; // firstLetter is "C"
 ```
+
+20.10.15 31. Understand String ImmutabilityPassed
+not with bracket notation, with reassign
+
+32. Use Bracket Notation to Find the Nth Character in a String
+
+```js
+var firstName = "Ada";
+var secondLetterOfFirstName = firstName[1];
+```
+
+33. **Use Bracket Notation to Find the Last Character in a StringPassed**
+
+- For example, if var firstName = "Charles", you can get the value of the last letter of the string by using firstName[firstName.length - 1].
+
+34. Use Bracket Notation to Find the Nth-to-Last Character in a StringPassed
+
+- For example, you can get the value of the third-to-last letter of the var firstName = "Charles" string by using firstName[firstName.length - 3]
+
+35. Word BlanksPassed
+
+- In a "Mad Libs" game, you are provided sentences with some missing words, like nouns, verbs, adjectives and adverbs. You then fill in the missing pieces with words of your choice in a way that the completed sentence makes sense.
+
+Consider this sentence - "It was really \_**\_, and we \_\_** ourselves \_\_\_\_". This sentence has three missing pieces- an adjective, a verb and an adverb, and we can add words of our choice to complete it. We can then assign the completed sentence to a variable as follows:
+
+- just about concatenating
+
+36. Store Multiple Values in one Variable using JavaScript Arrays
+
+37. Nest one Array within Another ArrayPassed
+
+```js
+[
+  ["Bulls", 23],
+  ["White Sox", 45],
+];
+```
+
+38. Access Array Data with IndexesPassed
+
+```js
+var array = [50, 60, 70];
+array[0]; // equals 50
+var data = array[1];
+```
+
+39. Modify Array Data With Indexes
+
+```js
+var ourArray = [50, 40, 30];
+ourArray[0] = 15; // equals [15,40,30]
+```
+
+40. Access Multi-Dimensional Arrays With Indexes
+
+- One way to think of a multi-dimensional array, is as an array of arrays.
+- the first set of brackets refers to the entries in the outer-most (the first level) array, and each additional pair of brackets refers to the next level of entries inside.
