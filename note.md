@@ -294,3 +294,138 @@ function myFun() {
   return someVar;
 }
 ```
+
+51. Return a Value from a Function with Return
+
+- We can pass values into a function with arguments. You can use a return statement to send a value back out of a function.
+
+```js
+function plusThree(num) {
+  return num + 3;
+}
+var answer = plusThree(5); // 8
+```
+
+( 왜 그래서 어쩌라는 겨?) 52. Understanding Undefined Value returned from a FunctionPassed
+
+- A function can include the return statement but it does not have to.
+- In the case that the function doesn't have a return statement, when you call it, the function processes the inner code but the returned value is undefined.
+
+```js
+var sum = 0;
+function addSum(num) {
+  sum = sum + num;
+}
+addSum(3); // sum will be modified but returned value is undefined*****
+```
+
+53. Assignment with a Returned Value\*\*\*
+
+- everything to the right of the equal sign is resolved before the value is assigned.
+- This means we can take the return value of a function and assign it to a variable.
+- Assume we have pre-defined a function sum which adds two numbers together, then:
+
+ourSum = sum(5, 12);
+
+will call sum function, which returns a value of 17 and assigns it to ourSum variable.
+
+54. Stand in Line(그냥 로직 짜는거 with pop, and shift)
+
+- In Computer Science a queue is an abstract Data Structure where items are kept in order.
+- New items can be added at the back of the queue and old items are taken off from the front of the queue.
+
+55. Understanding Boolean Values
+
+- Another data type is the Boolean. Booleans may only be one of two values: true or false. They are basically little on-off switches, where true is "on" and false is "off." These two states are mutually exclusive.
+
+- **_Boolean values are never written with quotes. The strings "true" and "false" are not Boolean and have no special meaning in JavaScript._**
+
+56. **_Use Conditional Logic with If Statements_**
+
+- If statements are used to make decisions in code.
+- The keyword if tells JavaScript to execute the code in the curly braces under certain conditions, defined in the parentheses.
+- These conditions are known as Boolean conditions and they may only be true or false.
+- When the condition evaluates to true, the program executes the statement inside the curly braces. When the Boolean condition evaluates to false, the statement inside the curly braces will not execute.
+-
+
+```js
+if (condition is true) {
+  statement is executed
+}
+
+function test (myCondition) {
+  if (myCondition) {
+     return "It was true";
+  }
+  return "It was false";
+}
+test(true);  // returns "It was true"
+test(false); // returns "It was false"
+```
+
+- When test is called with a value of true, the if statement evaluates myCondition to see if it is true or not. Since it is true, the function returns "It was true". When we call test with a value of false, myCondition is not true and the statement in the curly braces is not executed and the function returns "It was false".
+
+57. Comparison with the Equality Operator
+
+- There are many comparison operators in JavaScript. **_All of these operators return a boolean true or false value._**
+- The most basic operator is the equality operator ==
+- The equality operator compares two values and returns true if they're equivalent or false if they are not.
+-
+
+```js
+function equalityTest(myVal) {
+  if (myVal == 10) {
+    return "Equal";
+  }
+  return "Not Equal";
+}
+```
+
+- If myVal is equal to 10, the equality operator returns true, so the code in the curly braces will execute, and the function will return "Equal". Otherwise, the function will return "Not Equal"
+
+- **_In order for JavaScript to compare two different data types (for example, numbers and strings), it must convert one type to another. This is known as "Type Coercion". Once it does, however, it can compare terms as follows_**
+
+```js
+1 == 1; // true
+1 == 2; // false
+1 == "1"; // true
+"3" == 3; // true
+```
+
+58. Comparison with the Strict Equality Operator
+
+- Strict equality (===) is the counterpart to the equality operator (==).
+- However, unlike the equality operator, which attempts to convert both values being compared to a common type, the strict equality operator does not perform a type conversion.
+- If the values being compared have different types, they are considered unequal, and the strict equality operator will return false.
+-
+
+```js
+3 === 3; // true
+3 === "3"; // false
+```
+
+59. Practice comparing different valuesPassed
+
+- In JavaScript, you can determine the type of a variable or a value with the typeof operator
+-
+
+```js
+typeof 3; // returns 'number'
+typeof "3"; // returns 'string'
+```
+
+60. Comparison with the Inequality Operator
+
+- The inequality operator (!=) is the opposite of the equality operator.
+- It means "Not Equal" and returns false where equality would return true and vice versa.
+- Like the equality operator, the inequality operator will convert data types of values while comparing.
+
+```js
+1 != 2; // true
+1 != "1"; // false
+1 != "1"; // false
+1 != true; // false
+0 != false; // false
+```
+
+61.
