@@ -428,4 +428,167 @@ typeof "3"; // returns 'string'
 0 != false; // false
 ```
 
-61.
+61. Comparison with the Strict Inequality OperatorPassed
+
+- The strict inequality operator (!==) is the logical opposite of the strict equality operator. It means "Strictly Not Equal" and returns false where strict equality would return true and vice versa.
+
+```js
+3 !== 3; // false
+3 !== "3"; // true
+4 !== 3; // true
+```
+
+62. Comparison with the Greater Than Operator
+
+- The greater than operator (>) compares the values of two numbers
+- If the number to the left is greater than the number to the right, it returns true. Otherwise, it returns false.
+- **_Like the equality operator, greater than operator will convert data types of values while comparing._**
+
+```js
+5 > 3; // true
+7 > "3"; // true
+2 > 3; // false
+"1" > 9; // false
+```
+
+63. Comparison with the Greater Than Or Equal To Operator
+
+- The greater than or equal to operator (>=) compares the values of two numbers. If the number to the left is greater than or equal to the number to the right, it returns true. Otherwise, it returns false.
+- **Like the equality operator, greater than or equal to operator will convert data types while comparing.**
+
+```js
+6 >= 6; // true
+7 >= "3"; // true
+2 >= 3; // false
+"7" >= 9; // false
+```
+
+64. Comparison with the Less Than OperatorPassed
+
+- The less than operator (<) compares the values of two numbers. If the number to the left is less than the number to the right, it returns true. Otherwise, it returns false. Like the equality operator, less than operator converts data types while comparing.
+
+```js
+2 < 5; // true
+"3" < 7; // true
+5 < 5; // false
+3 < 2; // false
+"8" < 4; // false
+```
+
+65. Comparison with the Less Than Or Equal To Operator
+
+- The less than or equal to operator (<=) compares the values of two numbers. If the number to the left is less than or equal to the number to the right, it returns true. If the number on the left is greater than the number on the right, it returns false. Like the equality operator, less than or equal to converts data types.
+
+```js
+4 <= 5; // true
+"7" <= 7; // true
+5 <= 5; // true
+3 <= 2; // false
+"8" <= 4; // false
+```
+
+66. Comparisons with the Logical And Operator
+
+- The logical and operator (&&) returns true if and only if the operands to the left and right of it are true.
+- The same effect could be achieved by nesting an if statement inside another if:
+
+```js
+if (num > 5) {
+  if (num < 10) {
+    return "Yes";
+  }
+}
+return "No";
+```
+
+will only return "Yes" if num is greater than 5 and less than 10
+
+- same with &&
+
+```js
+if (num > 5 && num < 10) {
+  return "Yes";
+}
+return "No";
+```
+
+67. **_Comparisons with the Logical Or Operator_**(여전히 조금 헷갈)
+
+- The logical or operator (||) returns true if either of the operands is true. Otherwise, it returns false.
+- The pattern below should look familiar from prior waypoints:
+
+```js
+if (num > 10) {
+  return "No";
+}
+if (num < 5) {
+  return "No";
+}
+return "Yes";
+```
+
+will return "Yes" only if num is between 5 and 10 (5 and 10 included). The same logic can be written as:
+
+```js
+if (num > 10 || num < 5) {
+  return "No";
+}
+return "Yes";
+```
+
+68. Introducing Else Statements
+
+- When a condition for an if statement is true, the block of code following it is executed. What about when that condition is false? Normally nothing would happen. With an else statement, an alternate block of code can be executed.
+
+```js
+if (num > 10) {
+  return "Bigger than 10";
+} else {
+  return "10 or Less";
+}
+```
+
+69. Introducing Else If Statements
+
+- If you have multiple conditions that need to be addressed, you can chain if statements together with else if statements.
+
+```js
+if (num > 15) {
+  return "Bigger than 15";
+} else if (num < 5) {
+  return "Smaller than 5";
+} else {
+  return "Between 5 and 15";
+}
+```
+
+70. Logical Order in If Else Statements
+
+- Order is important in if, else if statements.
+- The function is executed from top to bottom so you will want to be careful of what statement comes first.
+- Here's the first:
+
+function foo(x) {
+if (x < 1) {
+return "Less than one";
+} else if (x < 2) {
+return "Less than two";
+} else {
+return "Greater than or equal to two";
+}
+}
+And the second just switches the order of the statements:
+
+function bar(x) {
+if (x < 2) {
+return "Less than two";
+} else if (x < 1) {
+return "Less than one";
+} else {
+return "Greater than or equal to two";
+}
+}
+While these two functions look nearly identical if we pass a number to both we get different outputs.
+
+foo(0) // "Less than one"
+bar(0) // "Less than two"
