@@ -592,3 +592,136 @@ While these two functions look nearly identical if we pass a number to both we g
 
 foo(0) // "Less than one"
 bar(0) // "Less than two"
+
+71. Chaining If Else Statements
+
+- if/else statements can be chained together for complex logic.
+- Here is pseudocode of multiple chained if / else if statements:
+
+```js
+if (condition1) {
+  statement1
+} else if (condition2) {
+  statement2
+} else if (condition3) {
+  statement3
+. . .
+} else {
+  statementN
+}
+```
+
+72. Golf Code
+73. Selecting from Many Options with Switch Statements
+
+- If you have many options to choose from, use a switch statement. A switch statement tests a value and can have many case statements which define various possible values. Statements are executed from the first matched case value until a break is encountered.
+
+```js
+switch (lowercaseLetter) {
+  case "a":
+    console.log("A");
+    break;
+  case "b":
+    console.log("B");
+    break;
+}
+```
+
+- case values are tested with strict equality (===). The break tells JavaScript to stop executing statements. If the break is omitted, the next statement will be executed.
+
+74. Adding a Default Option in Switch Statements
+
+- In a switch statement you may not be able to specify all possible values as case statements. Instead, you can add the default statement which will be executed if no matching case statements are found. Think of it like the final else statement in an if/else chain.
+
+```js
+switch (num) {
+  case value1:
+    statement1;
+    break;
+  case value2:
+    statement2;
+    break;
+...
+  default:
+    defaultStatement;
+    break;
+}
+```
+
+75. Multiple Identical Options in Switch Statements
+
+- If the break statement is omitted from a switch statement's case, the following case statement(s) are executed until a break is encountered. If you have multiple inputs with the same output, you can represent them in a switch statement like this:
+
+  ```js
+  switch (val) {
+    case 1:
+    case 2:
+    case 3:
+      result = "1, 2, or 3";
+      break;
+    case 4:
+      result = "4 alone";
+  }
+  ```
+
+76. Replacing If Else Chains with Switch
+
+- If you have many options to choose from, a switch statement can be easier to write than many chained if/else if statements. The following:
+
+```js
+if (val === 1) {
+  answer = "a";
+} else if (val === 2) {
+  answer = "b";
+} else {
+  answer = "c";
+}
+
+switch (val) {
+  case 1:
+    answer = "a";
+    break;
+  case 2:
+    answer = "b";
+    break;
+  default:
+    answer = "c";
+}
+```
+
+77. Returning Boolean Values from Functions
+
+Sometimes people use an if/else statement to do a comparison, like this:
+
+```js
+function isEqual(a, b) {
+  if (a === b) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+//But there's a better way to do this. Since === returns true or false, we can return the result of the comparison:
+function isEqual(a, b) {
+  return a === b;
+}
+```
+
+78. Return Early Pattern for Functions
+
+- When a return statement is reached, the execution of the current function stops and control returns to the calling location.
+
+```js
+function myFun() {
+  console.log("Hello");
+  return "World";
+  console.log("byebye");
+}
+myFun();
+```
+
+- The above outputs "Hello" to the console, returns "World", but "byebye" is never output, because the function exits at the return statement.
+
+79. Counting Cards
+    pass!!
