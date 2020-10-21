@@ -42,12 +42,17 @@ function handleClick(e){
 
   if(checkWin(currentClass)){
     endGame(false)
-  }
+  }else if(isDraw()){
+    endGame(true)
+  }else{
+    swapTurns()
+    setBoardHoverClass()
+  } 
 }
 // can not understand.....
 function endGame(draw){
   if(draw){
-    
+    winningMessageElement.innerText="Draw!"
   }else{
     winningMessageTextElement.innerText=`${circleTurn?"O's":"X's"} Wins!`
   }
@@ -55,6 +60,12 @@ function endGame(draw){
 }
 function placeMArk(cell,currentClass){
   cell.classList.add(currentClass)
+}
+
+function isDraw(){
+  return [...cellElements].every(cell=>{
+    return cell.classList.contains(X_CLASS)||cell.classList.contains(CIRCLE_CLASS)
+  })
 }
 
 function swapTurns(){
