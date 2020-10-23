@@ -1,6 +1,7 @@
 //place the marks
 const X_CLASS ="x"
 const CIRCLE_CLASS= "circle"
+
 const board = document.getElementById("board")
 const WINNING_COMBINATION=[
   [0,1,2],
@@ -31,8 +32,7 @@ function handleClick(e){
   //2. check for win
   //3. check for draw
   //4. switch turns
-
-  const cell = e.target
+  const cell = e.target//whatever we click
   const currentClass = circleTurn? CIRCLE_CLASS:X_CLASS
   placeMArk(cell,currentClass)
   swapTurns()
@@ -58,6 +58,7 @@ function endGame(draw){
   }
   winningMessageElement.classList.add("show")
 }
+//placeMark func//add x or circle
 function placeMArk(cell,currentClass){
   cell.classList.add(currentClass)
 }
