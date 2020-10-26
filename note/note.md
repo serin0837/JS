@@ -95,6 +95,8 @@ ourStr += "I come second.";
 // ourStr is now "I come first. I come second."
 ```
 
+**\_ I can not do it with - it will say NAN**
+
 27. Constructing Strings with VariablesPassed
 
 ```js
@@ -536,6 +538,21 @@ if (num > 10 || num < 5) {
 return "Yes";
 ```
 
+- 하기와 같은 방법으로도 사용이 가능하다
+
+```js
+function A() {
+  console.log("called A");
+  return false;
+}
+function B() {
+  console.log("called B");
+  return true;
+}
+
+console.log(B() || A());
+```
+
 68. Introducing Else Statements
 
 - When a condition for an if statement is true, the block of code following it is executed. What about when that condition is false? Normally nothing would happen. With an else statement, an alternate block of code can be executed.
@@ -935,7 +952,9 @@ var ourMusic = [
 "LP"
 ],
 "gold": true
-} 90. Accessing Nested Objects
+}
+
+90. Accessing Nested Objects
 
 - The sub-properties of objects can be accessed by chaining together the dot or bracket notation.
 
@@ -956,4 +975,142 @@ var ourStorage = {
 };
 ourStorage.cabinet["top drawer"].folder2; // "secrets"
 ourStorage.desk.drawer; // "stapler"
+```
+
+91. Accessing Nested Arrays
+
+```js
+var ourPets = [
+  {
+    animalType: "cat",
+    names: ["Meowzer", "Fluffy", "Kit-Cat"],
+  },
+  {
+    animalType: "dog",
+    names: ["Spot", "Bowser", "Frankie"],
+  },
+];
+ourPets[0].names[1]; // "Fluffy"
+ourPets[1].names[0]; // "Spot"
+//go to object and then using bracket
+```
+
+92. Record Collection
+    (could not solve)
+    object[id][prop] = collection[id][prop] || []; 완벽하게 이해가 안됨
+
+93. Iterate with JavaScript While Loops
+
+- The first type of loop we will learn is called a while loop because it runs "while" a specified condition is true and stops once that condition is no longer true.
+
+```js
+var ourArray = [];
+var i = 0;
+while (i < 5) {
+  ourArray.push(i);
+  i++;
+}
+```
+
+- In the code example above, the while loop will execute 5 times and append the numbers 0 through 4 to ourArray.
+- **\*append 뜻:add (something) to the end of a written document.ex) "the results of the survey are appended to this chapter"\_**
+
+94. Iterate with JavaScript For Loops
+
+- The most common type of JavaScript loop is called a for loop because it runs "for" a specific number of times.
+- For loops are declared with three optional expressions separated by semicolons:
+  for ([initialization]; [condition]; [final-expression])
+- The initialization statement is executed one time only before the loop starts. It is typically used to define and setup your loop variable.
+- The condition statement is evaluated at the beginning of every loop iteration and will continue as long as it evaluates to true. When condition is false at the start of the iteration, the loop will stop executing. This means if condition starts as false, your loop will never execute.
+- The final-expression is executed at the end of each loop iteration, prior to the next condition check and is usually used to increment or decrement your loop counter.
+
+95. Iterate Odd Numbers With a For Loop
+
+- For loops don't have to iterate one at a time. By changing our final-expression, we can count by even numbers.
+- We'll start at i = 0 and loop while i < 10. We'll increment i by 2 each loop with i += 2.
+
+```js
+var ourArray = [];
+for (var i = 0; i < 10; i += 2) {
+  ourArray.push(i);
+}
+```
+
+96. Count Backwards With a For Loop
+
+- We'll start at i = 10 and loop while i > 0. We'll decrement i by 2 each loop with i -= 2.
+
+```js
+var ourArray = [];
+for (var i = 10; i > 0; i -= 2) {
+  ourArray.push(i);
+}
+```
+
+97. Iterate Through an Array with a For Loop
+
+- A common task in JavaScript is to iterate through the contents of an array.
+- One way to do that is with a for loop. This code will output each element of the array arr to the console:
+
+```js
+var arr = [10, 9, 8, 7, 6];
+for (var i = 0; i < arr.length; i++) {
+  console.log(arr[i]);
+}
+```
+
+쉽네
+
+98. Nesting For Loops
+    If you have a multi-dimensional array, you can use the same logic as the prior waypoint to loop through both the array and any sub-arrays.
+
+```js
+var arr = [
+  [1, 2],
+  [3, 4],
+  [5, 6],
+];
+for (var i = 0; i < arr.length; i++) {
+  for (var j = 0; j < arr[i].length; j++) {
+    console.log(arr[i][j]);
+  }
+}
+```
+
+This outputs each sub-element in arr one at a time. Note that for the inner loop, we are checking the .length of arr[i], since arr[i] is itself an array.
+
+99. Iterate with JavaScript Do...While Loops
+
+- It is called a do...while loop because it will first do one pass of the code inside the loop no matter what, and then continue to run the loop while the specified condition evaluates to true.
+
+```js
+var ourArray = [];
+var i = 0;
+do {
+  ourArray.push(i);
+  i++;
+} while (i < 5);
+```
+
+- However, what makes the do...while different from other loops is how it behaves when the condition fails on the first check.
+
+- Essentially, a do...while loop ensures that the code inside the loop will run at least once.
+
+- difference
+
+```js
+var ourArray = [];
+var i = 5;
+while (i < 5) {
+  ourArray.push(i);
+  i++;
+}
+//The result is that ourArray will end up with no values added to it, and it will still look like [] when all of the code in the example above has completed running.
+var ourArray = [];
+var i = 5;
+do {
+  ourArray.push(i);
+  i++;
+} while (i < 5);
+//We will add a single element to the array and then increment i before we get to the condition check. When we finally evaluate the condition i < 5 on the last line, we see that i is now 6, which fails the conditional check, so we exit the loop and are done. At the end of the above example, the value of ourArray is [5]
 ```
