@@ -16,7 +16,10 @@
 // console.log(1 == "1")
 
 
-function A(){ console.log('called A'); return false; }
-function B(){NaN }
+// function A(){ console.log('called A'); return false; }
+// function B(){NaN }
 
-console.log( B() || A() ); 
+// console.log( B() || A() ); 
+
+let a = 8645
+console.log(a[1])
