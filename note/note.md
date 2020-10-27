@@ -1114,3 +1114,194 @@ do {
 } while (i < 5);
 //We will add a single element to the array and then increment i before we get to the condition check. When we finally evaluate the condition i < 5 on the last line, we see that i is now 6, which fails the conditional check, so we exit the loop and are done. At the end of the above example, the value of ourArray is [5]
 ```
+
+100. Replace Loops using Recursion (20.10.27)
+
+- Recursion is the concept that a function can be expressed in terms of itself. To help understand this, start by thinking about the following task: multiply the first n elements of an array to create the product of those elements. Using a for loop, you could do this:
+
+```js
+function multiply(arr, n) {
+  var product = 1;
+  for (var i = 0; i < n; i++) {
+    product *= arr[i];
+  }
+  return product;
+}
+```
+
+- However, notice that multiply(arr, n) == multiply(arr, n - 1) \* arr[n - 1]
+- That means you can rewrite multiply in terms of itself and never need to use a loop.
+
+```js
+function multiply(arr, n) {
+  if (n <= 0) {
+    return 1;
+  } else {
+    return multiply(arr, n - 1) * arr[n - 1];
+  }
+}
+```
+
+- In the base case, where n <= 0, it returns 1
+- For larger values of n, it calls itself, but with n - 1. That function call is evaluated in the same way, calling multiply again until n <= 0.
+- At this point, all the functions can return and the original multiply returns the answer.
+- Recursive functions must have a base case when they return without calling the function again (in this example, when n <= 0), otherwise they can never finish executing.
+  - 1. condition to stop(base case)
+  - 2. must call it self
+  - 3. move toward base case
+
+101. Profile Lookup did not pass at first
+     nest if
+
+```js
+// Setup
+var contacts = [
+  {
+    firstName: "Akira",
+    lastName: "Laine",
+    number: "0543236543",
+    likes: ["Pizza", "Coding", "Brownie Points"],
+  },
+  {
+    firstName: "Harry",
+    lastName: "Potter",
+    number: "0994372684",
+    likes: ["Hogwarts", "Magic", "Hagrid"],
+  },
+  {
+    firstName: "Sherlock",
+    lastName: "Holmes",
+    number: "0487345643",
+    likes: ["Intriguing Cases", "Violin"],
+  },
+  {
+    firstName: "Kristian",
+    lastName: "Vos",
+    number: "unknown",
+    likes: ["JavaScript", "Gaming", "Foxes"],
+  },
+];
+
+function lookUpProfile(name, prop) {
+  // Only change code below this line
+
+  for (let i = 0; i < contacts.length; i++) {
+    if (contacts[i].firstName === name) {
+      if (contacts[i].hasOwnProperty(prop)) {
+        return contacts[i][prop];
+      } else return "No such property";
+    }
+  }
+  return "No such contact";
+  // Only change code above this line
+}
+
+console.log(lookUpProfile("Kristian", "lastName"));
+```
+
+102. Generate Random Fractions with JavaScript
+
+- JavaScript has a Math.random() function that generates a random decimal number between 0 (inclusive) and not quite up to 1 (exclusive). Thus Math.random() can return a 0 but never quite return a 1
+- `Math.random()` 0~1
+
+103. Generate Random Whole Numbers with JavaScript
+
+- 1. Use Math.random() to generate a random decimal.
+- 2. Multiply that random decimal by 20.
+- 3. Use another function, Math.floor() to round the number down to its nearest whole number.
+- This technique will give us a whole number between 0 and 19.
+- `Math.floor(Math.random() * 20);`
+
+104. Generate Random Whole Numbers within a Range
+
+- we can generate a random whole number that falls within a range of two specific numbers.
+- To do this, we'll define a minimum number min and a maximum number max.
+- `Math.floor(Math.random() * (max - min + 1)) + min`
+- Math.random() gives us a random number between 0 and 1.
+
+But we don’t want a random decimal; we want a random number. We can get that by multiplying our Math.random() result by the size of the range. For example, if we want a random number between 0 and 10, we need to multiply by 10. A result of 0.4 would become 4. If we want random numbers from 7 to 11, that is 5 possible numbers (7, 8, 9, 10, 11).
+This is where we get Math.random() \* (max - min + 1)
+
+We don’t want decimal numbers though, we want whole numbers. Math.floor() just chops off the decimal. 3.14159 becomes 3.
+That’s where we get Math.floor(Math.random() \* (max - min + 1)).
+
+Now we’re getting a number from 0 to whatever our range size was. If we wanted a number from 7 to 11, it’s a random number from 0 to 5. To make that be a number from 7 to 11, we just need to add 7 to whatever number we got. 7 is our minimum value.
+This leads us to Math.floor(Math.random() \* (max - min + 1)) + min
+
+105. Use the parseInt Function
+
+- The parseInt() function parses a string and returns an integer.
+- any number that is not a fraction or decimal : any whole number or its negative.
+- If the first character in the string can't be converted into a number, then it returns NaN.
+
+106. Use the parseInt Function with a Radix
+
+- The parseInt() function parses a string and returns an integer. It takes a second argument for the radix, which specifies the base of the number in the string. The radix can be an integer between 2 and 36.
+
+- var a = parseInt("11", 2);
+- 12진법 16진법 등등 radix 이상해\*\*
+
+107. **_Use the Conditional (Ternary) Operator_**
+
+- The conditional operator, also called the ternary operator, can be used as a one line if-else expression.
+
+- condition ? expression-if-true : expression-if-false;
+-
+
+```js
+function findGreater(a, b) {
+  if (a > b) {
+    return "a is greater";
+  } else {
+    return "b is greater";
+  }
+}
+///This can be re-written using the conditional operator:
+
+function findGreater(a, b) {
+  return a > b ? "a is greater" : "b is greater";
+}
+```
+
+108. **_Use Multiple Conditional (Ternary) Operators_**
+
+- You can also chain them together to check for multiple conditions.
+
+```js
+function findGreaterOrEqual(a, b) {
+  if (a === b) {
+    return "a and b are equal";
+  } else if (a > b) {
+    return "a is greater";
+  } else {
+    return "b is greater";
+  }
+}
+
+//The above function can be re-written using multiple conditional operators:
+
+function findGreaterOrEqual(a, b) {
+  return a === b
+    ? "a and b are equal"
+    : a > b
+    ? "a is greater"
+    : "b is greater";
+}
+```
+
+- It is considered best practice to format multiple conditional operators such that each condition is on a separate line,
+
+109. Use Recursion to Create a Countdown 다시
+
+```js
+function countup(n) {
+  if (n < 1) {
+    return [];
+  } else {
+    const countArray = countup(n - 1);
+    countArray.push(n);
+    return countArray;
+  }
+}
+console.log(countup(5)); // [ 1, 2, 3, 4, 5]
+```
