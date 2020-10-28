@@ -1291,7 +1291,7 @@ function findGreaterOrEqual(a, b) {
 
 - It is considered best practice to format multiple conditional operators such that each condition is on a separate line,
 
-109. Use Recursion to Create a Countdown 다시
+109. Use Recursion to Create a Countdown 다시 !!!!1
 
 ```js
 function countup(n) {
@@ -1305,3 +1305,8 @@ function countup(n) {
 }
 console.log(countup(5)); // [ 1, 2, 3, 4, 5]
 ```
+
+- recursion call it self function until not calling
+- every loop we can make recursion but there is things that recursion can do which loop can not do!!!
+
+110. Use Recursion to Create a Range of Numbers 다시 !!!!!

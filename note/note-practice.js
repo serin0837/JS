@@ -21,5 +21,7 @@
 
 // console.log( B() || A() ); 
 
-let a = 8645
-console.log(a[1])
+// let a = 8645
+// console.log(a[1])
+let camper = 'James';
+let camper = 'David'
