@@ -20,3 +20,5 @@ console.log(sum);
 - async, await
 - callback
 - arrow function / normal function
+- apply(), call(), bind()
+- classes in general /OOP

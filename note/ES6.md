@@ -179,7 +179,7 @@ console.log(increment(1)); //2
 10. Use the Rest Parameter with Function Parameters (다시 !)
 
 - In order to help us create more flexible functions, ES6 introduces the rest parameter for function parameters.
-- With the rest parameter, you can create functions that take a variable number of arguments. These arguments are stored in an array that can be accessed later from inside the function.
+- **_With the rest parameter, you can create functions that take a variable number of arguments. These arguments are stored in an array that can be accessed later from inside the function._**(array로 저장되어서 array method 가 사용이 가능하다)
 
 ```js
 function howMany(...args) {
@@ -192,3 +192,156 @@ console.log(howMany("string", null, [1, 2, 3], {})); // You have passed 4 argume
 - The rest parameter eliminates the need to check the args array and allows us to apply map(), filter() and reduce() on the parameters array.
 - 파라미터가 variable이고 알규먼트는 실제 value 이다
   (reduce공부 하기 )
+  _reduce/ for of_
+  The for...of statement creates a loop iterating over iterable objects, including: built-in String, Array, array-like objects (e.g., arguments or NodeList), TypedArray, Map, Set, and user-defined iterables. It invokes a custom iteration hook with statements to be executed for the value of each distinct property of the object.
+
+for (variable of iterable) {
+statement
+}
+variable
+On each iteration a value of a different property is assigned to variable. variable may be declared with const, let, or var.
+iterable
+Object whose iterable properties are iterated.
+
+reduce:https://www.youtube.com/watch?v=g1C40tDP0Bk
+
+11. Use the Spread Operator to Evaluate Arrays In-Place
+
+- which allows us to expand arrays and other expressions in places where multiple parameters or elements are expected.
+
+```js
+var arr = [6, 89, 3, 45];
+var maximus = Math.max.apply(null, arr); // returns 89
+```
+
+- We had to use Math.max.apply(null, arr) because Math.max(arr) returns NaN. Math.max() expects comma-separated arguments, but not an array.
+- The spread operator makes this syntax much better to read and maintain.
+
+```js
+const arr = [6, 89, 3, 45];
+const maximus = Math.max(...arr);
+```
+
+- ...arr returns an unpacked array. In other words, it spreads the array.
+
+- However, the spread operator only works in-place, like in an argument to a function or in an array literal. The following code will not work:
+
+```js
+const spreaded = ...arr; // will throw a syntax error
+```
+
+apply()가 헷갈리네 또..
+
+12. Use Destructuring Assignment to Extract Values from Objects
+
+```js
+///Consider the following ES5 code:
+const user = { name: "John Doe", age: 34 };
+
+const name = user.name; // name = 'John Doe'
+const age = user.age; // age = 34
+
+///Here's an equivalent assignment statement using the ES6 destructuring syntax:
+const { name, age } = user;
+// name = 'John Doe', age = 34
+```
+
+- Here, the name and age variables will be created and assigned the values of their respective values from the user object. You can see how much cleaner this is.
+- You can extract as many or few values from the object as you want.
+
+13. **_Use Destructuring Assignment to Assign Variables from Objects_**
+
+- Destructuring allows you to assign a new variable name when extracting values.
+
+- You can do this by putting the new name after a colon when assigning the value.
+- Using the same object from the last example:
+
+```js
+const user = { name: "John Doe", age: 34 };
+// Here's how you can give new variable names in the assignment:
+
+const { name: userName, age: userAge } = user;
+// userName = 'John Doe', userAge = 34
+```
+
+- You may read it as "get the value of user.name and assign it to a new variable named userName" and so on.
+
+14. Use Destructuring Assignment to Assign Variables from Nested Objects
+
+- You can use the same principles from the previous two lessons to destructure values from nested objects.
+
+```js
+const user = {
+  johnDoe: {
+    age: 34,
+    email: "johnDoe@freeCodeCamp.com",
+  },
+};
+//Here's how to extract the values of object properties and assign them to variables with the same name:
+const {
+  johnDoe: { age, email },
+} = user;
+
+//And here's how you can assign an object properties' values to variables with different names:
+const {
+  johnDoe: { age: userAge, email: userEmail },
+} = user;
+```
+
+15. Use Destructuring Assignment to Assign Variables from Arrays
+
+- One key difference between the spread operator and array destructuring is that the spread operator unpacks all contents of an array into a comma-separated list. Consequently, you cannot pick or choose which elements you want to assign to variables.
+
+- Destructuring an array lets us do exactly that:
+
+```js
+const [a, b] = [1, 2, 3, 4, 5, 6];
+console.log(a, b); // 1, 2
+```
+
+- The variable a is assigned the first value of the array, and b is assigned the second value of the array. We can also access the value at any index in an array with destructuring by using commas to reach the desired index:
+
+```js
+const [a, b, , , c] = [1, 2, 3, 4, 5, 6];
+console.log(a, b, c); // 1, 2, 5
+```
+
+16. Use Destructuring Assignment with the Rest Parameter to Reassign Array Elements
+
+- In some situations involving array destructuring, we might want to collect the rest of the elements into a separate array.
+- The result is similar to Array.prototype.slice()
+
+```js
+const [a, b, ...arr] = [1, 2, 3, 4, 5, 7];
+console.log(a, b); // 1, 2
+console.log(arr); // [3, 4, 5, 7]
+```
+
+- The slice() method returns a shallow copy of a portion of an array into a new array object selected from start to end (end not included) where start and end represent the index of items in that array. The original array will not be modified.
+
+17. **_Use Destructuring Assignment to Pass an Object as a Function's Parameters_**
+
+- In some cases, you can destructure the object in a function argument itself.
+
+```js
+const profileUpdate = (profileData) => {
+  const { name, age, nationality, location } = profileData;
+  // do something with these variables
+};
+```
+
+This effectively destructures the object sent into the function. This can also be done in-place:
+
+```js
+const profileUpdate = ({ name, age, nationality, location }) => {
+  /* do something with these fields */
+};
+```
+
+- When profileData is passed to the above function, the values are destructured from the function parameter for use within the function.
+  근데 내가 이 옵젝트를 가지고 왔는지 이름도 없는데 어떻게 알지?!
+
+18. Create Strings using Template Literals
+
+- A new feature of ES6 is the template literal. This is a special type of string that makes creating complex strings easier.
+- Template literals allow you to create multi-line strings and to use string interpolation features to create strings.
