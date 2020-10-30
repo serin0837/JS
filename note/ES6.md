@@ -345,3 +345,191 @@ const profileUpdate = ({ name, age, nationality, location }) => {
 
 - A new feature of ES6 is the template literal. This is a special type of string that makes creating complex strings easier.
 - Template literals allow you to create multi-line strings and to use string interpolation features to create strings.
+
+```js
+const person = {
+  name: "Zodiac Hasbro",
+  age: 56,
+};
+
+// Template literal with multi-line and string interpolation
+const greeting = `Hello, my name is ${person.name}!
+I am ${person.age} years old.`;
+
+console.log(greeting); // prints
+// Hello, my name is Zodiac Hasbro!
+// I am 56 years old.
+```
+
+- Similarly, you can include other expressions in your string literal, for example \${a + b}.
+
+```js
+const result = {
+  success: ["max-length", "no-amd", "prefer-arrow-functions"],
+  failure: ["no-var", "var-on-top", "linebreak"],
+  skipped: ["no-extra-semi", "no-dup-keys"]
+};
+function makeList(arr) {
+  // Only change code below this line
+  const failureItems = [];
+  for(let i=0;i<arr.length;i++)
+  failureItems.push(`<li class="text-warning">${arr[i]}</li>`)
+
+
+  // Only change code above this line
+
+  return failureItems;
+  //[
+  //'<li class="text-warning">no-var</li>',
+  //'<li class="text-warning">var-on-top</li>',
+  //'<li class="text-warning">linebreak</li>'
+]
+}
+```
+
+19. Write Concise Object Literal Declarations Using Object Property Shorthand
+
+```js
+const getMousePosition = (x, y) => ({
+  x: x,
+  y: y,
+});
+```
+
+- getMousePosition is a simple function that returns an object containing two properties.
+
+- ES6 provides the syntactic sugar to eliminate the redundancy of having to write x: x. You can simply write x once, and it will be converted tox: x (or something equivalent) under the hood.
+
+- Here is the same function from above rewritten to use this new syntax:
+
+```js
+const getMousePosition = (x, y) => ({ x, y });
+```
+
+```js
+const createPerson = (name, age, gender) => {
+  "use strict";
+  // Only change code below this line
+  return {
+    name,
+    age,
+    gender,
+  };
+  // Only change code above this line
+};
+
+//createPerson("Zodiac Hasbro", 56, "male") should return {name: "Zodiac Hasbro", age: 56, gender: "male"}.
+```
+
+20. Write Concise Declarative Functions with ES6
+
+- When defining functions within objects in ES5, we have to use the keyword function as follows:
+
+```js
+const person = {
+  name: "Taylor",
+  sayHello: function () {
+    return `Hello! My name is ${this.name}.`;
+  },
+};
+```
+
+- With ES6, You can remove the function keyword and colon altogether when defining functions in objects. Here's an example of this syntax:
+
+```js
+const person = {
+  name: "Taylor",
+  sayHello() {
+    return `Hello! My name is ${this.name}.`;
+  },
+};
+```
+
+```js
+// Only change code below this line
+const bicycle = {
+  gear: 2,
+  setGear(newGear) {
+    this.gear = newGear;
+  },
+};
+// Only change code above this line
+bicycle.setGear(3);
+console.log(bicycle.gear);
+```
+
+21. Use class Syntax to Define a Constructor Function
+
+- ES6 provides a new syntax to create objects, using the class keyword.
+- It should be noted that the class syntax is just syntax, and not a full-fledged class-based implementation of an object-oriented paradigm, unlike in languages such as Java, Python, Ruby, etc.
+- In ES5, we usually define a constructor function and use the new keyword to instantiate an object.
+
+```js
+var SpaceShuttle = function (targetPlanet) {
+  this.targetPlanet = targetPlanet;
+};
+var zeus = new SpaceShuttle("Jupiter");
+```
+
+- The class syntax simply replaces the constructor function creation:
+
+```js
+class SpaceShuttle {
+  constructor(targetPlanet) {
+    this.targetPlanet = targetPlanet;
+  }
+}
+const zeus = new SpaceShuttle("Jupiter");
+```
+
+- It should be noted that the class keyword declares a new function, to which a constructor is added. This constructor is invoked when new is called to create a new object.
+
+- Notes:
+
+  - UpperCamelCase should be used by convention for ES6 class names, as in SpaceShuttle used above.
+  - The constructor method is a special method for creating and initializing an object created with a class. You will learn more about it in the Object Oriented Programming section of the JavaScript Algorithms And Data Structures Certification.
+
+```js
+// Only change code below this line
+class Vegetable {
+  constructor(name) {
+    this.name = name;
+  }
+}
+// Only change code above this line
+
+const carrot = new Vegetable("carrot");
+console.log(carrot.name); // Should display 'carrot'
+```
+
+22. Use getters and setters to Control Access to an Object
+
+- You can obtain values from an object and set the value of a property within an object.
+- These are classically called getters and setters.
+- Getter functions are meant to simply return (get) the value of an object's private variable to the user without the user directly accessing the private variable.
+- Setter functions are meant to modify (set) the value of an object's private variable based on the value passed into the setter function.
+- This change could involve calculations, or even overwriting the previous value completely.
+
+```js
+class Book {
+  constructor(author) {
+    this._author = author;
+  }
+  // getter
+  get writer() {
+    return this._author;
+  }
+  // setter
+  set writer(updatedAuthor) {
+    this._author = updatedAuthor;
+  }
+}
+const novel = new Book("anonymous");
+console.log(novel.writer); // anonymous
+novel.writer = "newAuthor";
+console.log(novel.writer); // newAuthor
+```
+
+- Notice the syntax used to invoke the getter and setter. They do not even look like functions. Getters and setters are important because they hide internal implementation details. Note: It is convention to precede the name of a private variable with an underscore (\_). However, the practice itself does not make a variable private.
+
+클라스 팩토리 펑션, 콘스트럭터 다시 복습 하자 !
