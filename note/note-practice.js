@@ -22,6 +22,27 @@
 // console.log( B() || A() ); 
 
 // let a = 8645
-// console.log(a[1])
-let camper = 'James';
-let camper = 'David'
+// // console.log(a[1])
+// let camper = 'James';
+// let camper = 'David'
+
+
+const changeName = function (newName)  {
+    this.name = newName;
+  };
+  
+  function createAccount(name) {
+    const newUser = {};
+    newUser.name = name;
+    newUser.changeName = changeName;
+    return newUser;
+  }
+  
+  const davidsAccount = createAccount('David');
+  
+  davidsAccount.changeName('Tom');
+  
+  console.log(davidsAccount.name); //'David'
+  console.log(davidsAccount.name); //'Tom'
+  console.log(davidsAccount)
+//   console.log(this)

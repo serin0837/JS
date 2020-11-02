@@ -17,7 +17,7 @@ console.log(sum);
 // Actual output: 0
 ```
 
-- async, await
+- async, await,promises
 - callback
 - arrow function / normal function
 - apply(), call(), bind()
