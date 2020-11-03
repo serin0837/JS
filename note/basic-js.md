@@ -1038,6 +1038,11 @@ for (var i = 0; i < 10; i += 2) {
 
 96. Count Backwards With a For Loop
 
+function largestOfFour(arr) {
+
+return arr.map(element=>Math.max(...element))
+}
+
 - We'll start at i = 10 and loop while i > 0. We'll decrement i by 2 each loop with i -= 2.
 
 ```js
