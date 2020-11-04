@@ -172,3 +172,284 @@ let todaysWeather = weatherConditions.slice(1, 3);
 ```
 
 - In effect, we have created a new array by extracting elements from an existing array.
+  마이너스로 했을때랑, start 만 있을때랑 헷갈림.
+
+8. Copy an Array with the Spread Operator
+
+```js
+let thisArray = [true, true, undefined, false, null];
+let thatArray = [...thisArray];
+// thatArray equals [true, true, undefined, false, null]
+// thisArray remains unchanged and thatArray contains the same elements as thisArray
+```
+
+바로 못품
+
+```js
+function copyMachine(arr, num) {
+  let newArr = [];
+  while (num >= 1) {
+    // Only change code below this line
+    newArr.push([...arr]);
+    // Only change code above this line
+    num--;
+  }
+  return newArr;
+}
+
+console.log(copyMachine([true, false, true], 3));
+```
+
+9. Combine Arrays with the Spread Operator
+
+- Another huge advantage of the spread operator, is the ability to combine arrays, or to insert all the elements of one array into another, at any index.
+- With more traditional syntaxes, we can concatenate arrays, but this only allows us to combine arrays at the end of one, and at the start of another. Spread syntax makes the following operation extremely simple:
+
+```js
+let thisArray = ["sage", "rosemary", "parsley", "thyme"];
+
+let thatArray = ["basil", "cilantro", ...thisArray, "coriander"];
+// thatArray now equals ['basil', 'cilantro', 'sage', 'rosemary', 'parsley', 'thyme', 'coriander']
+```
+
+10. Check For The Presence of an Element With indexOf()
+
+- Since arrays can be changed, or mutated, at any time, there's no guarantee about where a particular piece of data will be on a given array, or if that element even still exists.
+- Luckily, JavaScript provides us with another built-in method, indexOf(), that allows us to quickly and easily check for the presence of an element on an array. indexOf() takes an element as a parameter, and when called, it returns the position, or index, of that element, or -1 if the element does not exist on the array.
+
+```js
+let fruits = ["apples", "pears", "oranges", "peaches", "pears"];
+
+fruits.indexOf("dates"); // returns -1
+fruits.indexOf("oranges"); // returns 2
+fruits.indexOf("pears"); // returns 1, the first index at which the element exists
+```
+
+9. Iterate Through All an Array's Items Using For Loops
+
+- JavaScript offers several built in methods that each iterate over arrays in slightly different ways to achieve different results (such as every(), forEach(), map(), etc.), however the technique which is most flexible and offers us the greatest amount of control is a simple for loop.
+
+```js
+function greaterThanTen(arr) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 10) {
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr;
+}
+
+greaterThanTen([2, 12, 8, 14, 80, 0, 1]);
+// returns [12, 14, 80]
+```
+
+- Using a for loop, this function iterates through and accesses each element of the array, and subjects it to a simple test that we have created. In this way, we have easily and programmatically determined which data items are greater than 10, and returned a new array containing those items.
+  바로 못품
+  if statement에 return 을 적지 않는 이유?
+
+```js
+function filteredArray(arr, elem) {
+  let newArr = [];
+  // Only change code below this line
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].indexOf(elem) === -1) {
+      newArr.push(arr[i]);
+    }
+  }
+  // Only change code above this line
+  return newArr;
+}
+
+console.log(
+  filteredArray(
+    [
+      ["amy", "beth", "sam"],
+      ["dave", "sean", "peter"],
+    ],
+    "peter"
+  )
+);
+```
+
+10. Create complex multi-dimensional arrays
+
+- But before moving on to looking at Objects, lets take one more look, and see how arrays can become a bit more complex than what we have seen in previous challenges.
+- One of the most powerful features when thinking of arrays as data structures, is that arrays can contain, or even be completely made up of other arrays.
+- We have seen arrays that contain arrays in previous challenges, but fairly simple ones. However, arrays can contain an infinite depth of arrays that can contain other arrays, each with their own arbitrary levels of depth, and so on.
+- In this way, an array can very quickly become very complex data structure, known as a multi-dimensional, or nested array. Consider the following example:
+
+```js
+let nestedArray = [ // top, or first level - the outer most array
+  ['deep'], // an array within an array, 2 levels of depth
+  [
+    ['deeper'], ['deeper'] // 2 arrays nested 3 levels deep
+  ],
+  [
+    [
+      ['deepest'], ['deepest'] // 2 arrays nested 4 levels deep
+    ],
+    [
+      [
+        ['deepest-est?'] // an array nested 5 levels deep
+      ]
+    ]
+  ]
+```
+
+- this level of complexity is not unheard of, or even unusual, when dealing with large amounts of data. However, we can still very easily access the deepest levels of an array this complex with bracket notation:
+
+```js
+console.log(nestedArray[2][1][0][0][0]);
+// logs: deepest-est?
+```
+
+- And now that we know where that piece of data is, we can reset it if we need to:
+
+```js
+nestedArray[2][1][0][0][0] = "deeper still";
+
+console.log(nestedArray[2][1][0][0][0]);
+// now logs: deeper still
+```
+
+11. Add Key-Value Pairs to JavaScript Objects
+
+- At their most basic, objects are just collections of key-value pairs. In other words, they are pieces of data (values) mapped to unique identifiers called properties (keys).
+
+```js
+const tekkenCharacter = {
+  player: "Hwoarang",
+  fightingStyle: "Tae Kwon Doe",
+  human: true,
+};
+```
+
+If you want to add an additional property, such as "origin", it can be done by assigning origin to the object:
+
+```js
+tekkenCharacter.origin = "South Korea";
+```
+
+- This uses dot notation. If you were to observe the tekkenCharacter object, it will now include the origin property.
+
+- Hwoarang also had distinct orange hair. You can add this property with bracket notation by doing:
+
+```js
+tekkenCharacter["hair color"] = "dyed orange";
+```
+
+- Bracket notation is required if your property has a space in it or if you want to use a variable to name the property. In the above case, the property is enclosed in quotes to denote it as a string and will be added exactly as shown.
+
+- Without quotes, it will be evaluated as a variable and the name of the property will be whatever value the variable is. Here's an example with a variable:
+
+```js
+const eyes = "eye color";
+
+tekkenCharacter[eyes] = "brown";
+```
+
+After adding all the examples, the object will look like this:
+
+```js
+{
+  player: 'Hwoarang',
+  fightingStyle: 'Tae Kwon Doe',
+  human: true,
+  origin: 'South Korea',
+  'hair color': 'dyed orange',
+  'eye color': 'brown'
+};
+```
+
+12. Modify an Object Nested Within an Object
+
+- Object properties can be nested to an arbitrary depth, and their values can be any type of data supported by JavaScript, including arrays and even other objects. Consider the following:
+
+```js
+let nestedObject = {
+  id: 28802695164,
+  date: "December 31, 2016",
+  data: {
+    totalUsers: 99,
+    online: 80,
+    onlineStatus: {
+      active: 67,
+      away: 13,
+      busy: 8,
+    },
+  },
+};
+```
+
+```js
+nestedObject.data.onlineStatus.busy = 10;
+```
+
+13. Access Property Names with Bracket Notation
+
+- For instance, imagine that our foods object is being used in a program for a supermarket cash register. We have some function that sets the selectedFood and we want to check our foods object for the presence of that food. This might look like:
+
+```js
+let selectedFood = getCurrentFood(scannedItem);
+let inventory = foods[selectedFood];
+```
+
+- Bracket notation is very useful because sometimes object properties are not known before runtime or we need to access them in a more dynamic way.
+
+14. Use the delete Keyword to Remove Object Properties
+
+- Here we will see how we can remove a key-value pair from an object.
+- Let's revisit our foods object example one last time. If we wanted to remove the apples key, we can remove it by using the delete keyword like this:
+
+```js
+delete foods.apples;
+```
+
+15. **Check if an Object has a Property**
+
+- Now we can add, modify, and remove keys from objects. But what if we just wanted to know if an object has a specific property?
+- JavaScript provides us with two different ways to do this. One uses the hasOwnProperty() method and the other uses the in keyword.
+- If we have an object users with a property of Alan, we could check for its presence in either of the following ways:
+
+```js
+users.hasOwnProperty("Alan");
+"Alan" in users;
+// both return true
+```
+
+```js
+function isEveryoneHere(obj) {
+  return ["Alan", "Jeff", "Sarah", "Ryan"].every((name) =>
+    obj.hasOwnProperty(name)
+  );
+}
+
+//or
+
+function isEveryoneHere(obj) {
+  if ("Alan" in obj && "Jeff" in obj && "Sarah" in obj && "Ryan" in obj) {
+    return true;
+  }
+  return false;
+}
+```
+
+16. Iterate Through the Keys of an Object with a for...in Statement
+
+- Sometimes you may need to iterate through all the keys within an object. This requires a specific syntax in JavaScript called a for...in statement.
+
+```js
+for (let user in users) {
+  console.log(user);
+}
+
+// logs:
+Alan;
+Jeff;
+Sarah;
+Ryan;
+```
+
+- In this statement, we defined a variable user, and as you can see, this variable was reset during each iteration to each of the object's keys as the statement looped through the object, resulting in each user's name being printed to the console.
+- Objects do not maintain an ordering to stored keys like arrays do; thus a key's position on an object, or the relative order in which it appears, is irrelevant when referencing or accessing that key.

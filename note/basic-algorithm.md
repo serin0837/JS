@@ -88,4 +88,82 @@ function confirmEnding(str, target) {
 confirmEnding("Bastian", "stian");
 ```
 
-slice method는 array도 되고, string도 된다.
+slice method는 array도 되고, string도 된다. -도 된다.
+
+7. Repeat a String Repeat a String
+   Repeat a given string str (first argument) for num times (second argument). Return an empty string if num is not a positive number. For the purpose of this challenge, do not use the built-in .repeat() method.
+
+```js
+function repeatStringNumTimes(str, num) {
+  let newArr = [];
+  while (num >= 1) {
+    newArr.push(str.split());
+    num--;
+  }
+  return newArr.join("");
+}
+
+console.log(repeatStringNumTimes("abc", 3));
+```
+
+other
+
+```js
+function repeatStringNumTimes(str, num) {
+  var accumulatedStr = "";
+
+  while (num > 0) {
+    accumulatedStr += str;
+    num--;
+  }
+
+  return accumulatedStr;
+}
+```
+
+8. Truncate a String
+   Truncate a string (first argument) if it is longer than the given maximum string length (second argument). Return the truncated string with a ... ending.
+
+- substring method
+
+```js
+const str = "Mozilla";
+
+console.log(str.substring(1, 3));
+// expected output: "oz"
+
+console.log(str.substring(2));
+// expected output: "zilla"
+```
+
+my method
+
+```js
+function truncateString(str, num) {
+  if (num < str.length) {
+    return str.substring(0, num) + "...";
+  } else return str.substring(0, num);
+}
+
+console.log(
+  truncateString(
+    "A-tisket a-tasket A green and yellow basket",
+    "A-tisket a-tasket A green and yellow basket".length + 2
+  )
+);
+```
+
+```js
+function truncateString(str, num) {
+  // Clear out that junk in your trunk
+  if (str.length > num) {
+    return str.slice(0, num) + "...";
+  } else {
+    return str;
+  }
+}
+
+function truncateString(str, num) {
+  return str.length > num ? str.slice(0, num) + "..." : str;
+}
+```

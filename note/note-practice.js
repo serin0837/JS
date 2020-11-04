@@ -27,22 +27,28 @@
 // let camper = 'David'
 
 
-const changeName = function (newName)  {
-    this.name = newName;
-  };
+// const changeName = function (newName)  {
+//     this.name = newName;
+//   };
   
-  function createAccount(name) {
-    const newUser = {};
-    newUser.name = name;
-    newUser.changeName = changeName;
-    return newUser;
-  }
+//   function createAccount(name) {
+//     const newUser = {};
+//     newUser.name = name;
+//     newUser.changeName = changeName;
+//     return newUser;
+//   }
   
-  const davidsAccount = createAccount('David');
+//   const davidsAccount = createAccount('David');
   
-  davidsAccount.changeName('Tom');
+//   davidsAccount.changeName('Tom');
   
-  console.log(davidsAccount.name); //'David'
-  console.log(davidsAccount.name); //'Tom'
-  console.log(davidsAccount)
-//   console.log(this)
+//   console.log(davidsAccount.name); //'David'
+//   console.log(davidsAccount.name); //'Tom'
+//   console.log(davidsAccount)
+// //   console.log(this)
+
+
+let weatherConditions = ["rain", "snow", "sleet", "hail", "clear"];
+
+let todaysWeather = weatherConditions.slice(2);
+console.log(todaysWeather)
