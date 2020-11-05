@@ -167,3 +167,94 @@ function truncateString(str, num) {
   return str.length > num ? str.slice(0, num) + "..." : str;
 }
 ```
+
+9. Finders Keepers
+
+```js -serin
+function findElement(arr, func) {
+  for (let i = 0; i < arr.length; i++) {
+    let num = arr[i];
+    if (func(num)) return num;
+  }
+}
+
+console.log(
+  findElement([1, 3, 5, 8, 9, 10], function (num) {
+    return num % 2 === 0;
+  })
+);
+```
+
+```js
+function findElement(arr, func) {
+  let num = 0;
+
+  for (var i = 0; i < arr.length; i++) {
+    num = arr[i];
+    if (func(num)) {
+      return num;
+    }
+  }
+
+  return undefined;
+}
+```
+
+```js
+function findElement(arr, func) {
+  return arr.find(func);
+}
+```
+
+find method?이것도 내일 보기 !
+
+```js
+function findElement(arr, func) {
+  return arr[arr.map(func).indexOf(true)];
+}
+```
+
+10. Boo who
+    Check if a value is classified as a boolean primitive. Return true or false.
+
+```js serin
+function booWho(bool) {
+  if (bool === true || bool === false) return true;
+  else {
+    return false;
+  }
+}
+
+booWho(null);
+```
+
+```js
+function booWho(bool) {
+  return typeof bool === "boolean";
+}
+
+// test here
+booWho(null);
+```
+
+11. Title Case a Sentence
+    Return the provided string with the first letter of each word capitalized. Make sure the rest of the word is in lower case.
+
+For the purpose of this exercise, you should also capitalize connecting words like "the" and "of".
+
+```js serin
+function titleCase(str) {
+  let arrOfWord = str.split(" ");
+  let newArr = [];
+  for (let i = 0; i < arrOfWord.length; i++) {
+    let upper = arrOfWord[i].slice(0, 1).toUpperCase();
+    let lower = arrOfWord[i].slice(1).toLowerCase();
+    newArr.push(upper + lower);
+  }
+  return newArr.join(" ");
+}
+
+console.log(titleCase("I'm a little tea pot"));
+```
+
+다른 사람이 한것 보기
