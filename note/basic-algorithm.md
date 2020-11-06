@@ -206,7 +206,10 @@ function findElement(arr, func) {
 }
 ```
 
-find method?이것도 내일 보기 !
+- **find method**(이것도 하이어 올덜 펀션? 이겠지)
+  The find() method returns the value of the first element in the provided array that satisfies the provided testing function.
+  - If you need the index of the found element in the array, use findIndex().
+  - If you need to find the index of a value, use Array.prototype.indexOf(). (It’s similar to findIndex(), but checks each element for equality with the value instead of using a testing function.)
 
 ```js
 function findElement(arr, func) {
@@ -258,3 +261,152 @@ console.log(titleCase("I'm a little tea pot"));
 ```
 
 다른 사람이 한것 보기
+
+```js
+function titleCase(str) {
+  var convertToArray = str.toLowerCase().split(" ");
+  var result = convertToArray.map(function (val) {
+    return val.replace(val.charAt(0), val.charAt(0).toUpperCase());
+  });
+  return result.join(" ");
+}
+
+titleCase("I'm a little tea pot");
+```
+
+# replace method
+
+The replace() method returns a new string with some or all matches of a pattern replaced by a replacement.
+
+replace(바꾸고 싶은것, 뭘로 바꿀지 )
+`const newStr = str.replace(regexp|substr, newSubstr|function)`
+
+# charAt()
+
+The String object's charAt() method returns a new string consisting of the single UTF-16 code unit located at the specified offset into the string.
+`let character = str.charAt(index)` 12. Slice and Splice
+You are given two arrays and an index.
+
+Copy each element of the first array into the second array, in order.
+
+Begin inserting elements at index n of the second array.
+
+Return the resulting array. The input arrays should remain the same after the function runs.
+
+못풀었음, 내가 한것
+
+```js
+function frankenSplice(arr1, arr2, n) {
+  let newArr = [];
+  let frontOfArr2 = arr2.slice(0, n);
+  let endOfArr2 = arr2.slice(n);
+  let string = frontOfArr2 + "," + arr1 + "," + endOfArr2;
+  return string.toString();
+}
+
+console.log(
+  frankenSplice(["claw", "tentacle"], ["head", "shoulders", "knees", "toes"], 2)
+);
+```
+
+답
+
+```js
+function frankenSplice(arr1, arr2, n) {
+  let copyArr2 = arr2.slice();
+  copyArr2.splice(n, 0, ...arr1);
+  return copyArr2;
+}
+
+console.log(
+  frankenSplice(["claw", "tentacle"], ["head", "shoulders", "knees", "toes"], 2)
+);
+```
+
+13. Falsy Bouncer
+    Remove all falsy values from an array.
+
+Falsy values in JavaScript are false, null, 0, "", undefined, and NaN.
+
+Hint: Try converting each value to a Boolean.
+
+힌트 보고 나서 풀수 있었음.
+if statement 에 이거는 false다 이러고 있었는데 그럴필요가 없네 그냥 element를 넣으면 되네 /
+
+```js
+function bouncer(arr) {
+  let newArr = [];
+  for (let element of arr) {
+    if (element) {
+      newArr.push(element);
+    }
+  }
+  return newArr;
+}
+
+console.log(bouncer([7, "ate", "", false, 9]));
+```
+
+```js
+//이렇게도
+function bouncer(arr) {
+  return arr.filter(Boolean);
+}
+```
+
+- The Array.prototype.filter method expects a function that returns a Boolean value which takes a single argument and returns true for truthy value or false for falsy value. Hence we pass the built-in Boolean function.
+
+# filter method
+
+Map/filter/reduce in a tweet:
+
+map([🌽, 🐮, 🐔], cook)
+=> [🍿, 🍔, 🍳]
+
+filter([🍿, 🍔, 🍳], isVegetarian)
+=> [🍿, 🍳]
+
+reduce([🍿, 🍳], eat)
+=> 💩
+
+```js
+const students = [
+  { name: "Quincy", grade: 96 },
+  { name: "Jason", grade: 84 },
+  { name: "Alexis", grade: 100 },
+  { name: "Sam", grade: 65 },
+  { name: "Katie", grade: 90 },
+];
+
+const studentGrades = students.filter((student) => student.grade >= 90);
+return studentGrades; // [ { name: 'Quincy', grade: 96 }, { name: 'Alexis', grade: 100 }, { name: 'Katie', grade: 90 } ]
+```
+
+14. Where do I Belong
+    Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. The returned value should be a number.
+
+For example, getIndexToIns([1,2,3,4], 1.5) should return 1 because it is greater than 1 (index 0), but less than 2 (index 1).
+
+Likewise, getIndexToIns([20,3,5], 19) should return 2 because once the array has been sorted it will look like [3,5,20] and 19 is less than 20 (index 2) and greater than 5 (index 1).
+
+```js serin
+function getIndexToIns(arr, num) {
+  let newArr = [];
+  newArr.push(...arr, num);
+  // .sort((a,b)=>a-b)
+  newArr.sort((a, b) => a - b);
+  return newArr.indexOf(num);
+}
+
+console.log(getIndexToIns([3, 10, 5], 50));
+```
+
+```js
+function getIndexToIns(arr, num) {
+  arr.push(num);
+  arr.sort(function (a, b) {
+    return a - b;
+  });
+  return arr.indexOf(num);
+}
+```

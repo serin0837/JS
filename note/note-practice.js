@@ -48,7 +48,37 @@
 // //   console.log(this)
 
 
-let weatherConditions = ["rain", "snow", "sleet", "hail", "clear"];
+// let weatherConditions = ["rain", "snow", "sleet", "hail", "clear"];
 
-let todaysWeather = weatherConditions.slice(2);
-console.log(todaysWeather)
+// let todaysWeather = weatherConditions.slice(2);
+// console.log(todaysWeather)
+
+// const myAwesomeArray = [5, 4, 3, 2, 1];
+
+// console.log(myAwesomeArray.forEach((x) =>console.log( x * x)));
+
+// const numbers = [1,-1,2,3]
+
+
+// //use with reduce
+// const sum = numbers.reduce((accumulator, currentValue) => {
+//   //accumulator=sum
+//   //currentvalue=each element
+//   return accumulator + currentValue;
+// }, 0);
+
+// console.log(sum)
+
+function titleCase(str) {
+    var convertToArray = str.toLowerCase().split(" ");
+    console.log(convertToArray)
+    var result = convertToArray.map(function (val) {
+      return val.replace(val.charAt(0), val.charAt(0).toUpperCase());
+    });
+    console.log(result)
+    return result.join(" ");
+  }
+  
+  titleCase("I'm a little tea pot");
+
+
