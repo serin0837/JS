@@ -69,16 +69,31 @@
 
 // console.log(sum)
 
-function titleCase(str) {
-    var convertToArray = str.toLowerCase().split(" ");
-    console.log(convertToArray)
-    var result = convertToArray.map(function (val) {
-      return val.replace(val.charAt(0), val.charAt(0).toUpperCase());
-    });
-    console.log(result)
-    return result.join(" ");
-  }
+// function titleCase(str) {
+//     var convertToArray = str.toLowerCase().split(" ");
+//     console.log(convertToArray)
+//     var result = convertToArray.map(function (val) {
+//       return val.replace(val.charAt(0), val.charAt(0).toUpperCase());
+//     });
+//     console.log(result)
+//     return result.join(" ");
+//   }
   
-  titleCase("I'm a little tea pot");
+//   titleCase("I'm a little tea pot");
 
+
+const book = {
+  title: "Brave New World",
+  author: "Aldous Huxley",
+};
+
+function longerSummary(genre, year) {
+  console.log(
+    `${this.title} was written by ${this.author}. It is a ${genre} novel written in ${year}.`
+  );
+}
+
+longerSummary.call(book, "dystopian", 1932);
+
+longerSummary.apply(book, ["dystopian", 1932]);
 
