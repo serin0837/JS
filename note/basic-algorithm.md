@@ -410,3 +410,136 @@ function getIndexToIns(arr, num) {
   return arr.indexOf(num);
 }
 ```
+
+15. Mutations 이것도 푸는데 한참 걸림
+    Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
+
+For example, ["hello", "Hello"], should return true because all of the letters in the second string are present in the first, ignoring case.
+
+The arguments ["hello", "hey"] should return false because the string "hello" does not contain a "y".
+
+Lastly, ["Alien", "line"], should return true because all of the letters in "line" are present in "Alien".
+
+```js
+function mutation(arr) {
+  let arr2 = arr[1].toLowerCase();
+  let arr1 = arr[0].toLowerCase();
+  for (let x = 0; x < arr2.length; x++) {
+    if (arr1.indexOf(arr2[x]) < 0) {
+      return false;
+    }
+  }
+  return true;
+}
+console.log(mutation(["hello", "hey"]));
+```
+
+other methods
+
+```js
+function mutation(arr) {
+  return arr[1]
+    .toLowerCase()
+    .split("")
+    .every(function (letter) {
+      return arr[0].toLowerCase().indexOf(letter) != -1;
+    });
+}
+```
+
+```js 이것도 다시 보기
+function mutation([target, test], i = 0) {
+  target = target.toLowerCase();
+  test = test.toLowerCase();
+  return i >= test.length
+    ? true
+    : !target.includes(test[i])
+    ? false
+    : mutation([target, test], i + 1);
+}
+```
+
+16. Chunky Monkey 푸는데 한참 걸림
+    Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array.
+
+- while loop
+  condition 이 truthy 면 statement가 execute 된다.
+  하지만 while loop가 falsy 면 statement 가 execute안된다.
+- falsy value : 0,NaN, Undefined, null, false, " "(empty string)
+
+```js
+function chunkArrayInGroups(arr, size) {
+  let newArr = [];
+  while (arr.length) {
+    newArr.push(arr.splice(0, size));
+  }
+  return newArr;
+}
+```
+
+other solutions
+
+```js 이해가 안됨..
+function chunkArrayInGroups(arr, size) {
+  var temp = [];
+  var result = [];
+
+  for (var a = 0; a < arr.length; a++) {
+    if (a % size !== size - 1) temp.push(arr[a]);
+    else {
+      temp.push(arr[a]);
+      result.push(temp);
+      temp = [];
+    }
+  }
+
+  if (temp.length !== 0) result.push(temp);
+  return result;
+}
+chunkArrayInGroups(["a", "b", "c", "d"], 2) should return [["a", "b"], ["c", "d"]].
+```
+
+i가 그냥 ++가 아닌
+
+```js
+function chunkArrayInGroups(arr, size) {
+  // Break it up.
+  var arr2 = [];
+  for (var i = 0; i < arr.length; i += size) {
+    arr2.push(arr.slice(i, i + size));
+  }
+  return arr2;
+}
+```
+
+```js
+function chunkArrayInGroups(arr, size) {
+  // Break it up.
+  var newArr = [];
+  var i = 0;
+
+  while (i < arr.length) {
+    newArr.push(arr.slice(i, i + size));
+    i += size;
+  }
+  return newArr;
+}
+chunkArrayInGroups(["a", "b", "c", "d"], 2);
+```
+
+recursion 다시 보기
+
+```js
+function chunkArrayInGroups(arr, size) {
+  if (arr.length <= size) {
+    return [arr];
+  } else {
+    return [arr.slice(0, size)].concat(
+      chunkArrayInGroups(arr.slice(size), size)
+    );
+  }
+}
+```
+
+Array smaller than size is returned nested.
+For any array larger than size, it is split in two. First segment is nested and concatenated with second segment which makes a recursive call.

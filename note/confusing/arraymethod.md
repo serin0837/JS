@@ -194,3 +194,7 @@ console.log(sum);
 - arrow function / normal function
 - apply(), call(), bind()
 - classes in general /OOP
+- queryselector and getelementId, className differences
+- regex
+- export, import
+- promt( 어떻게 읽더라? 그거를 어떻게 보는지도 공부 하자 )
