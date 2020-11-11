@@ -447,7 +447,7 @@ function mutation(arr) {
 }
 ```
 
-```js 이것도 다시 보기
+```js 이것도 다시 보기11/11
 function mutation([target, test], i = 0) {
   target = target.toLowerCase();
   test = test.toLowerCase();
@@ -527,7 +527,7 @@ function chunkArrayInGroups(arr, size) {
 chunkArrayInGroups(["a", "b", "c", "d"], 2);
 ```
 
-recursion 다시 보기
+recursion 다시 보기 11/11
 
 ```js
 function chunkArrayInGroups(arr, size) {
