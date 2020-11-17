@@ -137,3 +137,21 @@ function destroyer(arr, ...arrTwo) {
 }
 console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3));
 ```
+
+- codeWars mumbling (바로 못품)
+  his time no story, no theory. The examples below show you how to write function accum:
+
+Examples:
+
+accum("abcd") -> "A-Bb-Ccc-Dddd"
+accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+accum("cwAt") -> "C-Ww-Aaa-Tttt"
+
+```js
+function accum(s) {
+  return s
+    .split("")
+    .map((c, i) => c.toUpperCase() + c.toLowerCase().repeat(i))
+    .join("-");
+}
+```
