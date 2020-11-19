@@ -49,6 +49,24 @@ function similarLicensePlates(plate1, plate2){
         })
     }
 }
+//answer
+function similarLicensePlates(plate1, plate2){
+    const pairGroup = [["0", "O", "Q"], ["1", "I", "T"], ["2", "Z"], ["5", "S"], ["8", "B"]]; 
+
+      const plate1Arr = plate1.split("").filter(str => /\S/.test(str));
+      const plate2Arr = plate2.split("").filter(str => /\S/.test(str));
+
+    if (plate1Arr.length !== plate2Arr.length) return false;
+
+    for (let i = 0; i < plate1Arr.length; i++) {
+        if (plate1Arr[i] === plate2Arr[i]) continue; 
+            const group = pairGroup.filter(group => group.includes(plate1Arr[i])); 
+            if (group.length === 0) return false;
+            if (![plate1Arr[i], plate2Arr[i]].every(char => group[0].includes(char))) return false; 
+        }
+        return true;
+};
+console.log(similarLicensePlates("1II", "III"));
 module.exports = similarLicensePlates
 
 
