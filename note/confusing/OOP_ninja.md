@@ -286,14 +286,14 @@ User.prototype.logout = function () {
   this.online = false;
   console.log(this.email, "has logged out");
 };
+// Admin
 function Admin(...args) {
   //want to inherit
-  //how to call User
-  User.apply(this, args); //this is just new object
+  //how to call User// User.apply(call User function)
+  User.apply(this, args); //this is just new object from User
   //args is array
   //new property that only admin have
   this.role = "super admin";
-
   //how to inherit methods?
 }
 
@@ -308,3 +308,5 @@ console.log(admin);
 - in userOne in proto there is funciton
   but not in adimin
 - but nested proto
+
+한번더 보기!
