@@ -40,9 +40,18 @@
 
 
 // The global variable
-var s = [23, 65, 98, 5];
-var newArr =[]
-for(let element of s){
-  newArr.push(element)
-}
-console.log(newArr)
+// var s = [23, 65, 98, 5];
+// var newArr =[]
+// for(let element of s){
+//   newArr.push(element)
+// }
+// console.log(newArr)
+
+const users = [
+  { name: 'John', age: 34 },
+  { name: 'Amy', age: 20 },
+  { name: 'camperCat', age: 10 }
+];
+
+const sumOfAges = users.reduce((sum, user) => sum + user.age);
+console.log(sumOfAges); // 64
