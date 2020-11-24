@@ -47,11 +47,21 @@
 // }
 // console.log(newArr)
 
-const users = [
-  { name: 'John', age: 34 },
-  { name: 'Amy', age: 20 },
-  { name: 'camperCat', age: 10 }
-];
+// const users = [
+//   { name: 'John', age: 34 },
+//   { name: 'Amy', age: 20 },
+//   { name: 'camperCat', age: 10 }
+// ];
 
-const sumOfAges = users.reduce((sum, user) => sum + user.age);
-console.log(sumOfAges); // 64
+// const sumOfAges = users.reduce((sum, user) => sum + user.age);
+// console.log(sumOfAges); // 64
+
+function descendingOrder(n){
+  let newArr =[];
+  let str = n.toString();
+  newArr = str.split("");
+
+  newArr.sort(function(a, b) {return b-a;});
+  Number(newArr);
+  return newArr;
+}
