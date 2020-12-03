@@ -54,3 +54,21 @@ function DNAStrand(dna) {
     .join("");
 }
 ```
+
+## 03/12/20
+
+- XO("ooxx") => true
+  XO("xooxx") => false
+  XO("ooxXm") => true
+  XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
+  XO("zzoo") => false
+
+```js
+function XO(str) {
+  //code here
+  const newArr = str.toLowerCase().split("");
+  const arrOfO = newArr.filter((element) => element === "o");
+  const arrOfX = newArr.filter((element) => element === "x");
+  return arrOfO.length === arrOfX.length ? true : false;
+}
+```
