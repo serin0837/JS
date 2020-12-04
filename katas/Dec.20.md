@@ -63,7 +63,7 @@ function DNAStrand(dna) {
   XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
   XO("zzoo") => false
 
-```js
+```js serin
 function XO(str) {
   //code here
   const newArr = str.toLowerCase().split("");
@@ -72,3 +72,25 @@ function XO(str) {
   return arrOfO.length === arrOfX.length ? true : false;
 }
 ```
+
+```js popular
+const XO = (str) => {
+  str = str.toLowerCase().split("");
+  return (
+    str.filter((x) => x === "x").length === str.filter((x) => x === "o").length
+  );
+};
+```
+
+04.12.20
+
+```js serin
+String.prototype.toJadenCase = function () {
+  //...
+  return this.split(" ")
+    .map((element) => element[0].toUpperCase() + element.slice(1))
+    .join(" ");
+};
+```
+
+a
