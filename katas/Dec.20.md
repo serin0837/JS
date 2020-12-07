@@ -93,4 +93,28 @@ String.prototype.toJadenCase = function () {
 };
 ```
 
-a
+## 07.12.20
+
+Given two integers a and b, which can be positive or negative, find the sum of all the integers between including them too and return it. If the two numbers are equal return a or b.
+
+Note: a and b are not ordered!
+
+function getSum( a,b )
+{
+// const newArr = []
+let sum = 0
+if(a<b){
+for(let i= a;i <= b;i++){
+sum += i
+}
+return sum
+}else if(a > b){
+for(let i= b;i <= a;i++){
+sum += i
+}
+return sum
+}else{
+return a
+}
+// return newArr.split("")
+}
