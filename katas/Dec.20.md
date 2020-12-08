@@ -99,22 +99,46 @@ Given two integers a and b, which can be positive or negative, find the sum of a
 
 Note: a and b are not ordered!
 
-function getSum( a,b )
-{
-// const newArr = []
-let sum = 0
-if(a<b){
-for(let i= a;i <= b;i++){
-sum += i
+```js
+function getSum(a, b) {
+  // const newArr = []
+  let sum = 0;
+  if (a < b) {
+    for (let i = a; i <= b; i++) {
+      sum += i;
+    }
+    return sum;
+  } else if (a > b) {
+    for (let i = b; i <= a; i++) {
+      sum += i;
+    }
+    return sum;
+  } else {
+    return a;
+  }
+  // return newArr.split("")
 }
-return sum
-}else if(a > b){
-for(let i= b;i <= a;i++){
-sum += i
+```
+
+08.12.20
+
+In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
+
+Example
+filter_list([1,2,'a','b']) == [1,2]
+filter_list([1,'a','b',0,15]) == [1,0,15]
+filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
+
+```js serin
+function filter_list(l) {
+  // Return a new array with the strings filtered out
+  // Return a new
+  return l.filter((element) => typeof element === "number");
 }
-return sum
-}else{
-return a
+```
+
+```js
+function filter_list(l) {
+  return l.filter((e) => Number.isInteger(e));
 }
-// return newArr.split("")
-}
+```

@@ -298,6 +298,12 @@ function Admin(...args) {
 }
 
 Admin.prototype = Object.create(User.prototype); //create new object
+
+Admin.deleteUser = function (u) {
+  users = users.filter((user) => {
+    return user.email != u.email;
+  });
+};
 var usrOne = new User("ryu@com@", "Ryu");
 var userTwo = new User("Mario@", "Yoshi");
 var admin = new Admin("serin@", "serin");
