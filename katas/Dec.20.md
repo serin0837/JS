@@ -143,7 +143,9 @@ function filter_list(l) {
 }
 ```
 
-09.12.20
+## 09.12.20
+
+- Growth of a Population
 
 ```js serin
 function nbYear(p0, percent, aug, p) {
@@ -164,5 +166,27 @@ function nbYear(p0, percent, aug, p) {
 function nbYear(p0, percent, aug, p) {
   for (var y = 0; p0 < p; y++) p0 = p0 * (1 + percent / 100) + aug;
   return y;
+}
+```
+
+## 10.12.20
+
+```js serin
+function maskify(cc) {
+  const lastString = cc.slice(-4);
+  const firstString = cc.slice(0, -4);
+  const regex = /[A-Za-z0-9]/g;
+  return (
+    firstString
+      .split("")
+      .map((element) => element.replace(regex, "#"))
+      .join("") + lastString
+  );
+}
+```
+
+```js
+function maskify(cc) {
+  return cc.slice(0, -4).replace(/./g, "#") + cc.slice(-4);
 }
 ```
