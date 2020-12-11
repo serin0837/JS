@@ -190,3 +190,32 @@ function maskify(cc) {
   return cc.slice(0, -4).replace(/./g, "#") + cc.slice(-4);
 }
 ```
+
+## 11.12.20
+
+```js
+function sumTwoSmallestNumbers(numbers) {
+  //Code here
+  numbers.sort((a, b) => {
+    return a - b;
+  });
+  return numbers[0] + numbers[1];
+}
+```
+
+## 11.12.20
+
+```js
+function longest(s1, s2) {
+  // your code
+  return new Set(s1 + s2);
+}
+```
+
+```js other
+function longest(s1, s2) {
+  return Array.from(new Set(s1 + s2))
+    .sort()
+    .join("");
+}
+```
