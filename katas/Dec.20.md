@@ -219,3 +219,14 @@ function longest(s1, s2) {
     .join("");
 }
 ```
+
+## 14.12.20
+
+sum of odd num
+I could not solve
+
+```js other
+function rowSumOddNumbers(n) {
+  return Math.pow(n, 3);
+}
+```
