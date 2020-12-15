@@ -230,3 +230,19 @@ function rowSumOddNumbers(n) {
   return Math.pow(n, 3);
 }
 ```
+
+## 15. 12. 20
+
+```js serin
+function validatePIN(pin) {
+  //return true or false
+  if (pin.length === 4 || pin.length === 6) {
+    return pin
+      .split("")
+      .map((element) => /[0-9]/g.test(element))
+      .every((element) => element === true);
+  } else {
+    return false;
+  }
+}
+```
