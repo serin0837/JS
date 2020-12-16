@@ -246,3 +246,21 @@ function validatePIN(pin) {
   }
 }
 ```
+
+## 16.12.20
+
+```js other
+function printerError(s) {
+  return s.match(/[^a-m]/g).length + "/" + s.length;
+}
+```
+
+```js serin
+function printerError(s) {
+  // your code
+  const lengthOfString = s.length;
+  const badColor = s.split("").filter((element) => /[n-z]/.test(element))
+    .length;
+  return badColor + "/" + lengthOfString;
+}
+```
