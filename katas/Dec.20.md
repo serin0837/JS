@@ -264,3 +264,20 @@ function printerError(s) {
   return badColor + "/" + lengthOfString;
 }
 ```
+
+# 17.12.20
+
+```js other (method confused I could not solve)
+function findNextSquare(sq) {
+  // Return the next square if sq is a perfect square, -1 otherwise
+  return Math.sqrt(sq) % 1 ? -1 : Math.pow(Math.sqrt(sq) + 1, 2);
+}
+```
+
+```js serin
+function openOrSenior(data) {
+  return data.map((element) =>
+    element[0] >= 55 && element[1] > 7 ? "Senior" : "Open"
+  );
+}
+```
