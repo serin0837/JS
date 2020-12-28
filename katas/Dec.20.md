@@ -305,3 +305,17 @@ const binaryArrayToNumber = (arr) => {
   return parseInt(arr.join(""), 2);
 };
 ```
+
+## 28.12.20
+
+could not solve
+
+```js
+function spinalCase(str) {
+  let regex = /\s+|_+/g;
+  str = str.replace(/([a-z])([A-Z])/g, "$1 $2"); // make space inbetween words
+  return str.replace(regex, "-").toLowerCase();
+}
+
+console.log(spinalCase("thisIsSpinalTap"));
+```
