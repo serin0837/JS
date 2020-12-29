@@ -319,3 +319,29 @@ function spinalCase(str) {
 
 console.log(spinalCase("thisIsSpinalTap"));
 ```
+
+## 29.12.20
+
+Multiples of 3 or 5
+
+```js
+function solution(number) {
+  let sum = 0;
+  for (let i = 1; i < number; i++) {
+    if (i % 3 === 0 || i % 5 === 0) sum += i;
+  }
+  return sum;
+}
+```
+
+Find the odd int
+
+```js answer // i could not solve// i dont get it
+function findOdd(A) {
+  var obj = {};
+  A.forEach((el) => (obj[el] ? obj[el]++ : (obj[el] = 1)));
+  for (prop in obj) {
+    if (obj[prop] % 2 !== 0) return Number(prop);
+  }
+}
+```
