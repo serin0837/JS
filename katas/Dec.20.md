@@ -360,3 +360,38 @@ function digital_root(n) {
   return digital_root(sum);
 }
 ```
+
+# 02.01.20
+
+-못풀었지만 비슷했음...
+
+```js
+function persistence(num) {
+  var times = 0;
+
+  num = num.toString();
+
+  while (num.length > 1) {
+    times++;
+    num = num
+      .split("")
+      .map(Number)
+      .reduce((a, b) => a * b)
+      .toString();
+  }
+
+  return times;
+}
+```
+
+```js
+function persistence(num) {
+  for (var i = 0; num > 9; i++) {
+    num = num
+      .toString()
+      .split("")
+      .reduce((t, c) => c * t);
+  }
+  return i;
+}
+```
