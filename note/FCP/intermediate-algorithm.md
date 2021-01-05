@@ -190,3 +190,29 @@ console.log(
   )
 );
 ```
+
+# 05.01.21
+
+Pig LatinPassed
+Pig Latin is a way of altering English Words. The rules are as follows:
+
+- If a word begins with a consonant, take the first consonant or consonant cluster, move it to the end of the word, and add "ay" to it.
+
+- If a word begins with a vowel, just add "way" at the end.
+
+```js serin
+function translatePigLatin(str) {
+  let vowelRegex = /[aeiou]/g;
+  let firstMatch = str.match(vowelRegex) || 0;
+  if (vowelRegex.test(str[0])) {
+    return str + "way";
+  } else if (firstMatch.length > 0) {
+    let matchVowel = str.indexOf(firstMatch[0]);
+    return str.slice(matchVowel) + str.slice(0, matchVowel) + "ay";
+  } else if (firstMatch === 0) {
+    return str + "ay";
+  }
+}
+
+translatePigLatin("consonant");
+```

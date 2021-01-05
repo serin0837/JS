@@ -56,12 +56,21 @@
 // const sumOfAges = users.reduce((sum, user) => sum + user.age);
 // console.log(sumOfAges); // 64
 
-function descendingOrder(n){
-  let newArr =[];
-  let str = n.toString();
-  newArr = str.split("");
+// function descendingOrder(n){
+//   let newArr =[];
+//   let str = n.toString();
+//   newArr = str.split("");
 
-  newArr.sort(function(a, b) {return b-a;});
-  Number(newArr);
-  return newArr;
+//   newArr.sort(function(a, b) {return b-a;});
+//   Number(newArr);
+//   return newArr;
+// }
+
+function solution(A, K) {
+    A.unshift(A.pop())
+    return A
+ 
+  // return A.unshift(popArr)// write your code in JavaScript (Node.js 8.9.4)
 }
+
+console.log(solution([3,4,5,6,6],3))
