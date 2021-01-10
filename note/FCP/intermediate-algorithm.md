@@ -278,3 +278,38 @@ function pairElement(str) {
 //test here
 pairElement("GCG");
 ```
+
+## Intermediate Algorithm Scripting: Missing letters
+
+```js mine
+function fearNotLetter(str) {
+  let alpabet = "abcdefghijklmnopqrstuvwxyz";
+  let startIndex = alpabet.indexOf(str[0]);
+  for (let i = startIndex; i <= str.length; i++) {
+    return alpabet[
+      alpabet.indexOf(
+        str
+          .split("")
+          .filter((element) => element === alpabet[i])
+          .join("")
+      ) + 1
+    ];
+  }
+}
+
+console.log(fearNotLetter("abce"));
+```
+
+```js answer
+function fearNotLetter(str) {
+  let alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let startingPoint = alphabet.indexOf(str[0]);
+
+  for (let i = 0; i < str.length + 1; i++) {
+    if (str[i] !== alphabet[startingPoint + i]) {
+      return alphabet[startingPoint + i];
+    }
+  }
+  return undefined;
+}
+```
