@@ -313,3 +313,14 @@ function fearNotLetter(str) {
   return undefined;
 }
 ```
+
+## Intermediate Algorithm Scripting: Sorted Union
+
+```js answer
+function uniteUnique(...arr) {
+  const flatArr = [].concat(...arr);
+  return [...new Set(flatArr)];
+}
+
+console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
+```
