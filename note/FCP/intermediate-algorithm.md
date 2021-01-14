@@ -350,3 +350,52 @@ function convertHTML(str) {
 // test here
 convertHTML("Dolce & Gabbana");
 ```
+
+## Sum All Odd Fibonacci Numbers
+
+Given a positive integer num, return the sum of all odd Fibonacci numbers that are less than or equal to num.
+
+The first two numbers in the Fibonacci sequence are 1 and 1. Every additional number in the sequence is the sum of the two previous numbers. The first six numbers of the Fibonacci sequence are 1, 1, 2, 3, 5 and 8.
+
+For example, sumFibs(10) should return 10 because all odd Fibonacci numbers less than or equal to 10 are 1, 1, 3, and 5.
+-> could not solve
+
+```js answer
+function sumFibs(num) {
+  let previousNum = 0;
+  let currentNum = 1;
+  let sum = 0;
+  while (currentNum <= num) {
+    if (currentNum % 2 !== 0) {
+      sum += currentNum;
+    }
+    currentNum += previousNum;
+    previousNum = currentNum - previousNum;
+  }
+  return sum;
+}
+
+sumFibs(4);
+// round 1 sum 1 current num 1 previous num 1
+// round 2 sum 2 current num 2 previous num 1
+// round 3 sum current num 3 previous num 2
+```
+
+## Sum All Primes
+
+A prime number is a whole number greater than 1 with exactly two divisors: 1 and itself. For example, 2 is a prime number because it is only divisible by 1 and 2. In contrast, 4 is not prime since it is divisible by 1, 2 and 4.
+
+Rewrite sumPrimes so it returns the sum of all prime numbers that are less than or equal to num.
+
+(I could not solve)
+
+```js
+function sumPrimes(num) {
+  // Check all numbers for primality
+  let primes = [];
+  for (let i = 2; i <= num; i++) {
+    if (primes.every((prime) => i % prime !== 0)) primes.push(i);
+  }
+  return primes.reduce((sum, prime) => sum + prime, 0);
+}
+```
