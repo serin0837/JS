@@ -399,3 +399,25 @@ function sumPrimes(num) {
   return primes.reduce((sum, prime) => sum + prime, 0);
 }
 ```
+
+## Drop it
+
+Given the array arr, iterate through and remove each element starting from the first element (the 0 index) until the function func returns true when the iterated element is passed through it.
+
+Then return the rest of the array once the condition is satisfied, otherwise, arr should be returned as an empty array.
+
+find index method!!!\*\*\*
+The findIndex() method returns the index of the first element in the array that satisfies the provided testing function. Otherwise, it returns -1, indicating that no element passed the test.
+
+```js could not solve myself
+function dropElements(arr, func) {
+  let index = arr.findIndex(func);
+  return index === -1 ? [] : arr.slice(index);
+}
+
+console.log(
+  dropElements([1, 2, 3, 4], function (n) {
+    return n > 5;
+  })
+);
+```
