@@ -17,3 +17,16 @@ function solution(A) {
 
 console.log(solution([1, 2, 3, 6, 6, 0]));
 ```
+
+## sum of Digits / Digital Root
+
+```js
+function digital_root(n) {
+  let sum = 0;
+  const arrOfNum = n.toString().split("");
+  for (let i = 0; i < arrOfNum.length; i++) {
+    sum += Number(arrOfNum[i]);
+  }
+  return sum > 9 ? digital_root(sum) : sum;
+}
+```
