@@ -34,3 +34,61 @@ function convertToRoman(num) {
 
 console.log(convertToRoman(29));
 ```
+
+```js
+function convertToRoman(num) {
+  let lookup = 
+  {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1}
+  let roman = ''
+  for (let i in lookup ) {
+      console.log(i)
+    while ( num >= lookup[i] ) {
+      roman += i;
+      num -= lookup[i];
+    }
+  }
+  return roman;
+}
+console.log(convertToRoman(29));
+```
+
+
+# ceasar cypher
+
+function rot13(str) {
+  let ceasarsPair = {
+      A:"N",
+      B:"O",
+      C:"P",
+      D:"Q",
+      E:"R",
+      F:"S",
+      G:"T",
+      H:"U",
+      I:"V",
+      J:"W",
+      K:"X",
+      L:"Y",
+      M:"Z",
+      N:"A",
+      O:"B",
+      P:"C",
+      Q:"D",
+      R:"E",
+      S:"F",
+      T:"G",
+      U:"H",
+      V:"I",
+      W:"J",
+      X:"K",
+      Y:"L",
+      Z:"M"
+  }
+
+
+
+  let regexAlphabet = /[A-Z]/
+  return str.split("").map(letter => regexAlphabet.test(letter)?ceasarsPair[letter]:letter).join("")
+
+}
+console.log(rot13("SERR PBQR PNZC"));
