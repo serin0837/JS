@@ -92,3 +92,15 @@ function rot13(str) {
 
 }
 console.log(rot13("SERR PBQR PNZC"));
+
+# Telephone Number Validator
+I did not solve this. 
+```js
+function telephoneCheck(str) {
+  var regex = /^(1\s?)?(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{4}$/;
+  return regex.test(str);
+}
+telephoneCheck("555-555-5555");
+
+console.log(telephoneCheck("5555555"));
+```
